@@ -8,7 +8,7 @@ import { Link as ScrollLink } from 'react-scroll';
 // Initialize Cloudinary instance
 const cld = new Cloudinary({
     cloud: {
-        cloudName: 'your-cloud-name' // Replace with your Cloudinary cloud name
+        cloudName: 'daerjbaol'
     }
 });
 
@@ -16,9 +16,8 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false);
 
     // Create Cloudinary image instance for your logo
-    const logo = cld.image('AJZ-logo') // Use your image's public ID in Cloudinary
-        .format('auto') // Auto-optimize format (WebP/AVIF)
-        .quality('auto'); // Auto-adjust quality
+    const logo = cld.image('AJZ-logo_qmrqxa')
+        .quality('auto');
 
     const navList = [
         { link: "Home" },
