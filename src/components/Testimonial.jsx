@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,8 +8,6 @@ import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-//localStorage.removeItem('testimonials');
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
