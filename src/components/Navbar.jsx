@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { Link as ScrollLink } from 'react-scroll';
+import { fill } from '@cloudinary/url-gen/actions/resize';
 
 // Initialize Cloudinary instance
 const cld = new Cloudinary({
@@ -17,6 +18,11 @@ const Navbar = () => {
 
     // Create Cloudinary image instance for your logo
     const logo = cld.image('AJZ-logo_qmrqxa')
+        .resize(
+            fill()
+                .width(160)
+                .height(40)
+        )
         .quality('auto');
 
     const navList = [
@@ -40,7 +46,7 @@ const Navbar = () => {
                                 cldImg={logo}
                                 alt="Al Jazeera Residence Logo"
                                 className="h-16 w-32 object-contain"
-                                plugins={[]} // You can add plugins here if needed
+                                plugins={[]}
                             />
                         </a>
                     </div>
