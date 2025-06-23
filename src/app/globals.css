@@ -2,15 +2,6 @@
 @import "tailwindcss/utilities";
 /*@import "tailwindcss/components";*/
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
-
-* {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .home_section {
     background: linear-gradient(rgba(15,23,43,0.6), rgba(15,23,43,0.6)),
     url(https://res.cloudinary.com/daerjbaol/image/upload/v1750528030/AJRHomepage_eoqe6d.jpg);
@@ -33,6 +24,11 @@ nav {
 
 .nav_bg {
     background: rgba(0,0,0,.18);
+}
+
+/* globals.css */
+[fdprocessedid] {
+    all: unset !important;
 }
 
 .btn {

@@ -1,10 +1,12 @@
-"use client";
+'use client';
+
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { Link as ScrollLink } from 'react-scroll';
 import { fill } from '@cloudinary/url-gen/actions/resize';
+import useHydrationSafe from '../hooks/useHydrationSafe'; // Import the hook
 
 // Initialize Cloudinary instance
 const cld = new Cloudinary({
@@ -15,6 +17,7 @@ const cld = new Cloudinary({
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
+    const isMounted = useHydrationSafe(); // Use the hydration-safe hook
 
     // Create Cloudinary image instance for your logo
     const logo = cld.image('AJZ-logo_qmrqxa')
@@ -32,6 +35,9 @@ const Navbar = () => {
         { link: "Testimonials" },
         { link: "Contacts" }
     ];
+
+    // Return null during SSR to prevent hydration mismatch
+    if (!isMounted) return null;
 
     return (
         <nav className="sticky top-0 z-50 nav_bg h-16 flex items-center backdrop-blur-sm">
@@ -53,14 +59,12 @@ const Navbar = () => {
 
                     <div className="flex-1 flex justify-end">
                         <button
+                            type="button"
+                            aria-label={toggle ? 'Close menu' : 'Open menu'}
                             onClick={() => setToggle((prev) => !prev)}
                             className="text-primary z-50"
                         >
-                            {toggle ? (
-                                <FaTimes className="w-5 h-5" />
-                            ) : (
-                                <FaBars className="w-5 h-5" />
-                            )}
+                            {toggle ? <FaTimes className="w-5 h-5" /> : <FaBars className="w-5 h-5" />}
                         </button>
                     </div>
                 </div>
